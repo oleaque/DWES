@@ -19,26 +19,28 @@ while ($row = $result->fetch_assoc()) {
     echo "El usuario " . $row['nombre'] . " posee el ID " . $row['id'] . " y su estado es: " . $row['estado'];
 
 }
+$nombrein="nacho";
+$estadoin="1";
 
-$sql= "insert into usuarios (nombre, id, estado) values ('nacho', '67', '0') ";
+$sql= "insert into usuarios (nombre, estado) values ($nombrein, $estadoin) ";
     if ($mysqli->query($sql)===true){
-        echo"Se ha realizado la inserción con la nueva id:" . $row['id'];
+        echo"Se ha realizado la inserción con la nueva id: $mysqli->insert_id ";
     }else{
         echo"no se pudede insertar";
     }
 
-$sql= "update usuarios set estado = '1' where nombre = 'nacho' ";
+$sql= "update usuarios set estado = '1' where nombre = $nombrein ";
     if ($mysqli->query($sql)===true){
-        echo "se ha realizado correctamente la actualizacion de la" . $row['id'];
+        echo "se ha realizado correctamente la actualizacion de la" . $mysqli->insert_id;
     }else{
         echo "error no se ha podido hacer";
     }
 
-$sql="delete from usuarios where nombre = 'nacho'";
+$sql="delete from usuarios where nombre = $nombrein ";
     if ($mysqli->query($sql)===true){
-        echo" se ha realizado correctamente el borrado de la " . $row['id'];
+        echo" se ha realizado correctamente el borrado de la " . $mysqli->insert_id;
     }else{
-        echo"error no ha sido posible";
+        echo "error no se ha podido borrar";
     }
 
 $mysqli->close();
