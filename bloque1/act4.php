@@ -2,47 +2,48 @@
 $base=0;
 $altura=0;
 $radio=0;
-$arear=0;
-$radioc=0;
-$opcion="";
 $area=0;
 
-  function calcularAreaTriangulo($base, $altura){
-    $area=$base*$altura/2;
+
+function calcularAreaTriangulo($base, $altura){
+    return $area=$base*$altura/2;
 }
 
-  function calcularAreaRectangulo($base, $altura){
-    $arear=$base*$altura;
+function calcularAreaRectangulo($base, $altura){
+   return $arear=$base*$altura;
 
 }
-  function calcularAreaCirculo($radio){
-    $radioc=3.14*$radio*$radio;
+function calcularAreaCirculo($radio){
+    return 3.14*$radio ;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $opcion = $_POST['forma'] ?? "";
-    $base = $_POST['base'] ?? 0;
-    $altura = $_POST['altura'] ?? 0;
-    $radio = $_POST['radio'] ?? 0;
-}
-
-if ($opcion == "triangulo" && $base > 0 && $altura > 0) {
-    $area = calcularAreaTriangulo($base, $altura);
-} elseif ($opcion == "rectangulo" && $base > 0 && $altura > 0) {
-    $area = calcularAreaRectangulo($base, $altura);
-} elseif ($opcion == "circulo" && $radio > 0) {
-    $area = calcularAreaCirculo($radio);
-}
-
-if ($area > 0) {
-    if ($opcion == "triangulo") {
-        echo "El área del triángulo es: $area<br>";
-    } elseif ($opcion == "rectangulo") {
-        echo "El área del rectángulo es: $area<br>";
-    } elseif ($opcion == "circulo") {
-        echo "El área del círculo es: $area<br>";
+    if(isset($_POST['forma'])) {
+        $forma = $_POST['forma'];
+        $base = $_POST['base'];
+        $altura = $_POST['altura'];
+        $radio = $_POST['radio'];
     }
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $forma = $_POST['forma'] ;
+    $base = $_POST['base'];
+    $altura = $_POST['altura'] ;
+    $area= calcularAreaRectangulo($base,$altura);
+    echo" el area del rectangulo es $area";
+
+    $base = $_POST['base'];
+    $altura = $_POST['altura'] ;
+    $area= calcularAreaTriangulo($base,$altura);
+    echo" el area del triangulo es $area";
+
+    $radio = $_POST['radio'];
+    $area= calcularAreaCirculo($radio);
+    echo" el area del circulo es $area";
+
+}
+
+
 ?>
 
 
