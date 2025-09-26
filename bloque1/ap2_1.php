@@ -55,12 +55,21 @@ class vehiculoCarrera
     {
         parent::__construct($marca, $modelo, $velocidad, $combustible);
         $this->alerones=$alerones;
-    }public function activarDRS()
+    }public function activarDRS($velocidad,$alerones){
+        if($alerones==true){
+            echo"$this->velocidad la velocidad aumenta 40";
+        }
+    }
 
 }class cocheElectricoF1{
 pubic function __construct($marca, $modelo, $velocidad, $combustible,$bateria){
     parent::__construct($marca, $modelo, $velocidad, $combustible);
         $this->bateria=$bateria;
+    }
+    public function recargar($bateria){
+        if($this->bateria<15){
+            echo"hay que recargar el vehiculo ";
+        }
     }
 
 }
