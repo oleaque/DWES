@@ -1,18 +1,28 @@
 <?php
+require_once __DIR__ . "/../core/database.php";
 class Producto{
     private $lista;
-    public function __construct(){
-        $this->lista=[
-        "title" => "MVC Sencillo PHP",
-            "keyworks" => "arquitectura de software, poo, mvc, php",
-            "description" => "ponemos en práctica el MVC en PHP",
-            "content" => "El contenido del presente ejercico corresponde a la creación de
- un modelo vista controlado, MVC en adelante, mediante el lenguaje
- de programación PHP de una forma sencilla y haciendo uso de los
- conocimientos previos que tienen los alumnos."
- ];
+    public function __construct()
+    {
     }
-    public function obtenerTodos(){
-        return $this->lista;
+    public function getTodas()
+    {
+        $db = Database::getInstance();
+        $sql = "SELECT * FROM tareas";
+        $result = $db->executeSQL($sql);
+        $tareas = [];
+        foreach ($result as $row) {
+            $tareas[] = $row;
+        }
+        $this->data = $tareas;
+        return $this->data;
+    }
+    public function getTaskById($id)
+    {
+        $db = Database::getInstance();
+        $sql = "SELECT * FROM tareas WHERE id = :id";
+        $params = ['id' => $id];
+        $result = $db->executeSQL($sql, $params);
+        return $result ? $result[0] : null;
     }
 }
