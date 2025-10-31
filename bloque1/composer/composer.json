@@ -1,0 +1,17 @@
+{
+    "name": "root/composer",
+    "description": "primero",
+    "autoload": {
+        "psr-4": {
+            "Root\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "joan"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.9"
+    }
+}
