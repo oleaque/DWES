@@ -1,0 +1,6 @@
+{
+  "/": {
+    "controller": "MainController",
+    "action": "main"
+  }
+}
