@@ -61,7 +61,7 @@ class vehiculoCarrera
         }
     }
 
-}class cocheElectricoF1{
+}class cocheElectricoF1 extends vehiculoCarrera{
 pubic function __construct($marca, $modelo, $velocidad, $combustible,$bateria){
     parent::__construct($marca, $modelo, $velocidad, $combustible);
         $this->bateria=$bateria;
