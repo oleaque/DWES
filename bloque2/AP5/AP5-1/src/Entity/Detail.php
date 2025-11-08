@@ -19,7 +19,6 @@ class detail
     #[Column(name: 'PROD_NUM', type: 'integer')]
     private int $product;
 
-
     #[Column(name: 'PRECIO_VENTA', type: 'decimal')]
     private int $selling_price;
 
@@ -28,6 +27,48 @@ class detail
 
     #[Column(name: 'IMPORTE', type: 'decimal')]
     private int $import;
+    public function getSellingPrice(): int
+    {
+        return $this->selling_price;
+    }
+
+    public function setSellingPrice(int $selling_price): void
+    {
+        $this->selling_price = $selling_price;
+    }
+
+    public function getProduct(): int
+    {
+        return $this->product;
+    }
+
+    public function setProduct(int $product): void
+    {
+        $this->product = $product;
+    }
+
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function getImport(): int
+    {
+        return $this->import;
+    }
+
+    public function setImport(int $import): void
+    {
+        $this->import = $import;
+    }
+
+
+
 
 
 }

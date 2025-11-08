@@ -40,4 +40,110 @@ class Client
 
     #[column(name: 'OBSERVACIONES', type: 'text')]
     private string $observations;
+    #[OneToMany(targetEntity: Order::class, mappedBy: 'client')]
+    private Collection $orders;
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getDirec(): string
+    {
+        return $this->direc;
+    }
+
+    public function setDirec(string $direc): void
+    {
+        $this->direc = $direc;
+    }
+
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getPostalCode(): string
+    {
+        return $this->postal_code;
+    }
+
+    public function setPostalCode(string $postal_code): void
+    {
+        $this->postal_code = $postal_code;
+    }
+
+    public function getArea(): int
+    {
+        return $this->area;
+    }
+
+    public function setArea(int $area): void
+    {
+        $this->area = $area;
+    }
+
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    public function getRepr(): int
+    {
+        return $this->repr;
+    }
+
+    public function setRepr(int $repr): void
+    {
+        $this->repr = $repr;
+    }
+
+    public function getCreditLimit(): int
+    {
+        return $this->credit_limit;
+    }
+
+    public function setCreditLimit(int $credit_limit): void
+    {
+        $this->credit_limit = $credit_limit;
+    }
+
+    public function getObservations(): string
+    {
+        return $this->observations;
+    }
+
+    public function setObservations(string $observations): void
+    {
+        $this->observations = $observations;
+    }
 }
+
