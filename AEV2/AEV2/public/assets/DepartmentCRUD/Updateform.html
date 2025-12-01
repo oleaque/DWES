@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Departamento</title>
+</head>
+<body>
+<h1>Actualizar Departamento</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/departamentos">Lista de Departamentos</a>
+</nav>
+<hr>
+<form action="<?php echo '/departamento/update/' . $departments->getDepartmentNumber() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $departments->getDepartmentNumber() ?>">
+
+
+    <label for="name">Nombre:</label><br>
+    <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($departments->getDepartmentName())?>">
+    <br><br>
+
+    <label for="location">Localizacion:</label><br>
+    <input type="text" name="location" id="location" value="<?php echo htmlspecialchars($departments->getLocation())?>">
+    <br><br>
+
+    <label for="color">Color:</label><br>
+    <input type="text" name="color" id="color" value="<?php echo htmlspecialchars($departments->getColor())?>">
+    <br><br>
+
+    <button type="submit" name="submit" value="1">Actualizar Departamento</button>
+</form>
+</body>
+</html>

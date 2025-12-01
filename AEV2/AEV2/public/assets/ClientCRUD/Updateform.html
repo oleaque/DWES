@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Cliente</title>
+</head>
+<body>
+<h1>Actualizar Cliente</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/clientes">Lista de Clientes</a>
+</nav>
+<hr>
+<form action="<?php echo '/cliente/update/' . $clients->getClientCode() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $clients->getClientCode() ?>">
+
+
+    <label for="name">Nombre:</label><br>
+    <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($clients->getName())?>">
+    <br><br>
+
+    <label for="adress">Direccion:</label><br>
+    <input type="text" name="adress" id="adress" value="<?php echo htmlspecialchars($clients->getAddress())?>">
+    <br><br>
+
+    <label for="city">Ciudad:</label><br>
+    <input type="text" name="city" id="city" value="<?php echo htmlspecialchars($clients->getCity())?>">
+    <br><br>
+
+    <label for="status">Estado:</label><br>
+    <input type="text" name="status" id="status" value="<?php echo htmlspecialchars($clients->getStatus())?>">
+    <br><br>
+
+    <label for="postal_code">Codigo postal:</label><br>
+    <input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars( $clients->getPostalCode())?>">
+    <br><br>
+
+    <label for="area">Area:</label><br>
+    <input type="number" name="area" id="area" value="<?php echo htmlspecialchars( $clients->getArea())?>">
+    <br><br>
+
+    <label for="phone">Telefono:</label><br>
+    <input type="text" name="phone" id="phone" value="<?php echo htmlspecialchars( $clients->getPhone())?>">
+    <br><br>
+
+    <label for="credit_limit">Limite de credito:</label><br>
+    <input type="number" name="credit_limit" id="credit_limit" value="<?php echo htmlspecialchars( $clients->getCredit())?>">
+    <br><br>
+
+    <label for="observations">Observaciones:</label><br>
+    <textarea name="observations" id="observations"required><?php echo htmlspecialchars( $clients->getObservations())?></textarea>
+    <br><br>
+
+    <label for="representant">Representante:</label>
+    <select name="representant" id="representant" >
+        <option value="<?php echo htmlspecialchars($clients->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?>"><?php echo htmlspecialchars($clients->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?></option>
+        <?php foreach ($clientsAll as $client): ?>
+        <option value="<?php echo htmlspecialchars($client->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?>"><?php echo htmlspecialchars($client->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?></option>
+        <?php endforeach; ?>
+    </select>
+    <br><br>
+
+
+
+    <button type="submit" name="submit" value="1">Actualizar Cliente</button>
+</form>
+</body>
+</html>

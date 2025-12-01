@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Empleado</title>
+</head>
+<body>
+    <h1>Crear Empleado</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/empleados">Lista de Empleados</a>
+    </nav>
+    <hr>
+    <form action="<?php echo '/empleado/create' ?>" method="POST">
+
+        <label for="id">Numero de empleado:</label><br>
+        <input type="number" name="id" id="id" required>
+        <br><br>
+
+        <label for="surname">Apellidos:</label><br>
+        <input type="text" name="surname" id="surname" required>
+        <br><br>
+
+        <label for="office">Oficio:</label><br>
+        <input type="text" name="office" id="office" required>
+        <br><br>
+
+        <label for="start_date">Fecha alta:</label><br>
+        <input type="date" name="start_date" id="start_date" required>
+        <br><br>
+
+        <label for="salary">Salario:</label><br>
+        <input type="number" name="salary" id="salary" required>
+        <br><br>
+
+        <label for="commision">Comision:</label><br>
+        <input type="number" name="commision" id="commision" required>
+        <br><br>
+
+        <label for="department">Departamento:</label>
+        <select name="department" id="department" required>
+        <?php foreach ($employees as $employee): ?>
+            <option value="<?php echo htmlspecialchars($employee->getDepartment()->getDepartmentNumber())?>"><?php echo htmlspecialchars($employee->getDepartment()->getDepartmentNumber())?></option>
+        <?php endforeach; ?>
+        </select>
+        <br><br>
+
+        <label for="boss">Jefe:</label>
+        <select name="boss" id="boss">
+            <option></option>
+            <?php foreach ($employees as $employee): ?>
+            <option value="<?php echo htmlspecialchars($employee->getBoss()?->getEmployeeNumber() ?? 'nulo')?>" ><?php echo htmlspecialchars($employee->getBoss()?->getEmployeeNumber() ?? 'nulo')?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <br><br>
+
+        <button type="submit" name="submit" value="1">Crear Empleado</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</body>
+</html>

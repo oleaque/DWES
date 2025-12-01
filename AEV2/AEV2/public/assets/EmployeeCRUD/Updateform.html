@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Empleado</title>
+</head>
+<body>
+<h1>Actualizar Empleado</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/empleados">Lista de Empleados</a>
+</nav>
+<hr>
+<form action="<?php echo '/empleado/update/' . $employees->getEmployeeNumber() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $employees->getEmployeeNumber() ?>">
+
+
+    <label for="surname">Apellidos:</label><br>
+    <input type="text" name="surname" id="surname" value="<?php echo htmlspecialchars($employees->getSurname())?>">
+    <br><br>
+
+    <label for="office">Oficio:</label><br>
+    <input type="text" name="office" id="office" value="<?php echo htmlspecialchars($employees->getOffice())?>">
+    <br><br>
+
+    <label for="start_date">Fecha alta:</label><br>
+    <input type="date" name="start_date" id="start_date" value="<?php echo htmlspecialchars($employees->getStartDate()->format('Y-m-d'))?>">
+    <br><br>
+
+    <label for="salary">Salario:</label><br>
+    <input type="number" name="salary" id="salary" value="<?php echo htmlspecialchars($employees->getSalary())?>">
+    <br><br>
+
+    <label for="commision">Comision:</label><br>
+    <input type="number" name="commision" id="commision" value="<?php echo htmlspecialchars( $employees->getComission())?>">
+    <br><br>
+
+    <label for="department">Departamento:</label>
+    <select name="department" id="department" >
+        <?php foreach ($employeesAll as $employee): ?>
+        <option value="<?php echo htmlspecialchars($employees->getDepartment()->getDepartmentNumber())?>"></option>
+        <option value="<?php echo htmlspecialchars($employee->getDepartment()->getDepartmentNumber())?>"><?php echo htmlspecialchars($employee->getDepartment()->getDepartmentNumber())?></option>
+        <?php endforeach; ?>
+    </select>
+    <br><br>
+
+    <label for="boss">Jefe:</label>
+    <select name="boss" id="boss">
+        <option></option>
+        <?php foreach ($employeesAll as $employee): ?>
+        <option value="<?php echo htmlspecialchars($employee->getBoss()?->getEmployeeNumber() ?? 'nulo')?>" ><?php echo htmlspecialchars($employee->getBoss()?->getEmployeeNumber() ?? 'nulo')?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <br><br>
+
+
+    <button type="submit" name="submit" value="1">Actualizar Empleado</button>
+</form>
+</body>
+</html>

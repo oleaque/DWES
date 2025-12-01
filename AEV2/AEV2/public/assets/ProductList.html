@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+</head>
+<style>
+    a{
+        text-decoration: none;
+        color: blue;
+    }
+
+</style>
+<body>
+<h1>Listado de Productos</h1>
+<nav>
+    <a href="/">Inicio</a> |
+</nav>
+<hr>
+<table border="1">
+    <tr>
+        <th>Numero Producto</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+        <th>Pedidos relacionados</th>
+
+
+    </tr>
+    <?php foreach ($products as $product): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($product->getProductNumber()) ?></td>
+        <td><?php echo htmlspecialchars($product->getDescription()) ?></td>
+        <td><a href="/producto/update/<?php echo $product->getProductNumber() ?>">🔄 Actualizar</a> ||
+        <a href="/producto/delete/<?php echo $product->getProductNumber() ?>">❌ Borrar</a> </td>
+        <td>
+        <?php foreach ($product?->getDetails() as $detail): ?>
+            ||
+        <a href="/pedido/read/<?php echo $detail->getOrderNumber()->getOrderNum()?>"><?php echo htmlspecialchars($detail->getOrderNumber()->getOrderNum()) ?></a>
+        ||
+            <?php endforeach; ?>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    <p><a href="/producto/create">➕ Crear Nuevo Producto</a></p>
+</table>
+</body>
+</html>

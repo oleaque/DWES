@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Pedido</title>
+</head>
+<body>
+<h1>Detalle Pedido</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/pedidos">Lista de Pedidos</a>
+</nav>
+<hr>
+<table border="1">
+    <tr>
+        <th>Numero pedido</th>
+        <th>Numero de detalle</th>
+        <th>Numero de producto</th>
+        <th>Precio de venta</th>
+        <th>Cantidad</th>
+        <th>Importe</th>
+    </tr>
+    <?php foreach ($order->getDetails() as $detail): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($order->getOrderNum()) ?></td>
+        <td><?php echo htmlspecialchars($detail->getDetailNumber()) ?></td>
+        <td><?php echo htmlspecialchars($detail->getProductNumber()->getProductNumber()) ?></td>
+        <td><?php echo htmlspecialchars($detail->getSalePrice()) ?></td>
+        <td><?php echo htmlspecialchars($detail->getQuantity()) ?></td>
+        <td><?php echo htmlspecialchars($detail->getPrice()) ?></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<hr>
+</body>
+</html>

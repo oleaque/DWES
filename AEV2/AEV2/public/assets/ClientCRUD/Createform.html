@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cliente</title>
+</head>
+<body>
+    <h1>Crear Cliente</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/clientes">Lista de Clientes</a>
+    </nav>
+    <hr>
+    <form action="<?php echo '/cliente/create' ?>" method="POST">
+
+        <label for="id">Numero de Cliente:</label><br>
+        <input type="number" name="id" id="id" required>
+        <br><br>
+
+        <label for="name">Nombre:</label><br>
+        <input type="text" name="name" id="name" required>
+        <br><br>
+
+        <label for="adress">Direccion:</label><br>
+        <input type="text" name="adress" id="adress" required>
+        <br><br>
+
+        <label for="city">Ciudad:</label><br>
+        <input type="text" name="city" id="city" required>
+        <br><br>
+
+        <label for="status">Estado:</label><br>
+        <input type="text" name="status" id="status" required>
+        <br><br>
+
+        <label for="postal_code">Codigo postal:</label><br>
+        <input type="text" name="postal_code" id="postal_code" required>
+        <br><br>
+
+        <label for="area">Area:</label><br>
+        <input type="number" name="area" id="area" required>
+        <br><br>
+
+        <label for="phone">Telefono:</label><br>
+        <input type="text" name="phone" id="phone" required>
+        <br><br>
+
+        <label for="credit_limit">Limite de credito:</label><br>
+        <input type="number" name="credit_limit" id="credit_limit" required>
+        <br><br>
+
+        <label for="observations">Observaciones:</label><br>
+        <textarea name="observations" id="observations" required></textarea>
+        <br><br>
+
+        <label for="representant">Representante:</label>
+        <select name="representant" id="representant">
+            <option></option>
+            <?php foreach ($clients as $client): ?>
+            <option value="<?php echo htmlspecialchars($client->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?>" ><?php echo htmlspecialchars($client->getRepresentant()?->getEmployeeNumber() ?? 'nulo')?></option>
+            <?php endforeach; ?>
+        </select>
+
+        <br><br>
+
+        <button type="submit" name="submit" value="1">Crear Cliente</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</body>
+</html>

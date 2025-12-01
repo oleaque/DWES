@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Pedidos</title>
+</head>
+<body>
+<h1>Listado de Pedidos</h1>
+<nav>
+    <a href="/">Inicio</a> |
+</nav>
+<hr>
+
+<table border="1">
+    <tr>
+        <th>Numero Pedido</th>
+        <th>Codigo cliente</th>
+        <th>Tipo de pedido</th>
+        <th>Fecha de pedido</th>
+        <th>Fecha de envio</th>
+        <th>Total</th>
+        <th>Vista detalle</th>
+        <th>Acciones</th>
+    </tr>
+    <?php foreach ($orders as $order): ?>
+
+    <tr>
+        <td><?php echo htmlspecialchars($order->getOrderNum()) ?></td>
+        <td><?php echo htmlspecialchars($order->getClientCode()->getClientCode()) ?></td>
+        <td><?php echo htmlspecialchars($order->getOrderType() ?? 'nulo'); ?>
+        </td>
+        <td><?php echo htmlspecialchars($order->getOrderDate()->format('d-m-Y')) ?></td>
+        <td><?php echo htmlspecialchars($order->getSendingDate()->format('d-m-Y')) ?></td>
+        <td><?php echo htmlspecialchars($order->getTotal()) ?></td>
+        <td align="center">
+            <?php foreach ($order->getDetails() as $detail): ?>
+            <?php if (!$detail->getDetailNumber()): ?>
+            <?php break; ?>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <?php foreach ($order->getDetails() as $detail): ?>
+        <?php if ($detail->getDetailNumber()): ?>
+        <a href="/pedido/read/<?php echo $order->getOrderNum()?>">X</a>
+            <?php break; ?>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        </td>
+        <td><a href="/pedido/update/<?php echo $order->getOrderNum() ?>">🔄 Actualizar</a> <br>
+            <a href="/pedido/delete/<?php echo $order->getOrderNum() ?>">❌ Borrar</a> </td>
+    </tr>
+
+    <?php endforeach; ?>
+    <p><a href="/pedido/create">➕ Crear Nuevo Pedido</a></p>
+</table>
+</body>
+</html>

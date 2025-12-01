@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+</head>
+<body>
+<h1>Empleados</h1>
+<nav>
+    <a href="/">Inicio</a>
+</nav>
+<hr>
+<table border="1">
+    <tr>
+        <th>Numero empleado</th>
+        <th>Apellidos</th>
+        <th>Oficio</th>
+        <th>Jefe</th>
+        <th>Fecha alta</th>
+        <th>Salario</th>
+        <th>Comision</th>
+        <th>Numero de departamento</th>
+        <th>Acciones</th>
+    </tr>
+    <?php foreach ($employees as $employee): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($employee->getEmployeeNumber()) ?></td>
+        <td><?php echo htmlspecialchars($employee->getSurname()) ?></td>
+        <td><?php echo htmlspecialchars($employee->getOffice()) ?></td>
+        <td><?php echo htmlspecialchars($employee->getBoss()?->getEmployeeNumber() ?? 'nulo') ?></td>
+        <td><?php echo htmlspecialchars($employee->getStartDate()->format('d-m-Y')) ?></td>
+        <td><?php echo htmlspecialchars($employee->getSalary()) ?></td>
+        <td><?php echo htmlspecialchars($employee->getComission() ?? 'nulo') ?></td>
+        <td><?php echo htmlspecialchars($employee->getDepartment()?->getDepartmentNumber() ?? 'nulo') ?></td>
+        <td><a href="/empleado/update/<?php echo $employee->getEmployeeNumber() ?>">🔄 Actualizar</a> ||
+        <a href="/empleado/delete/<?php echo $employee->getEmployeeNumber() ?>">❌ Borrar</a> </td>
+        <td></td>
+    </tr>
+    <?php endforeach; ?>
+    <p><a href="/empleado/create">➕ Crear Nuevo Empleado</a></p>
+</table>
+<hr>
+</body>
+</html>

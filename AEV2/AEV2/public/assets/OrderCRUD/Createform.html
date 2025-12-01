@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Pedido</title>
+</head>
+<body>
+    <h1>Crear Pedido</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/pedidos">Lista de Pedidos</a>
+    </nav>
+    <hr>
+    <form action="<?php echo '/pedido/create' ?>" method="POST">
+
+        <label for="id">Numero de pedido:</label><br>
+        <input type="number" name="id" id="id" required>
+        <br><br>
+
+        <label for="order_date">Fecha pedido:</label><br>
+        <input type="date" name="order_date" id="order_date" required>
+        <br><br>
+
+        <label for="type">Tipo:</label><br>
+        <select name="type" id="type">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        <br><br>
+
+        <label for="sending_date">Fecha envio:</label><br>
+        <input type="date" name="sending_date" id="sending_date" required>
+        <br><br>
+
+        <label for="total">Total:</label><br>
+        <input type="number" name="total" id="total" required>
+        <br><br>
+
+
+        <label for="client">Cliente:</label>
+        <select name="client" id="client" required>
+        <?php foreach ($orders as $order): ?>
+            <option value="<?php echo htmlspecialchars($order->getClientCode()->getClientCode())?>"><?php echo htmlspecialchars($order->getClientCode()->getClientCode())?></option>
+        <?php endforeach; ?>
+        </select>
+        <br><br>
+
+        <button type="submit" name="submit" value="1">Crear Pedido</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</body>
+</html>

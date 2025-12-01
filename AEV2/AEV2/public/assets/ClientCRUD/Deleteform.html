@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Cliente</title>
+</head>
+<body>
+<h1>Borrar Cliente</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/clientes">Lista de Clientes</a>
+</nav>
+<hr>
+        <h2>❌ Estas seguro de eliminar el Cliente || <?php echo $client->getClientCode() ?> || ❌</h2>
+
+<form action="<?php echo '/cliente/delete/' . $client->getClientCode() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $client->getClientCode() ?>">
+    <button type="submit" name="submit" value="1" >CONFIRMAR ELIMINADO</button>
+</form>
+<table>
+    <tr>
+    <th>Pedidos relacionados</th>
+    </tr>
+    <tr>
+        <?php foreach ($client->getOrders() as $orders): ?>
+    <td>
+        ||
+        <a href="/pedido/read/<?php echo htmlspecialchars($orders->getOrderNum())?>"><?php echo htmlspecialchars($orders->getOrderNum()) ?></a>
+        ||
+    </td>
+    </tr>
+        <tr>
+        <?php endforeach; ?>
+        <?php if ($client->getOrders()->isEmpty()): ?>
+        <td>No hay pedidos asociados.</td>
+        <?php endif; ?>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar producto</title>
+</head>
+<body>
+<h1>Actualizar producto</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/productos">Lista de Productos</a>
+</nav>
+<hr>
+<form action="<?php echo '/producto/update/' . $products->getProductNumber() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $products->getProductNumber() ?>">
+
+    <label for="description">Descripcion:</label><br>
+    <input type="text" name="description" id="description" value="<?php echo $products->getDescription() ?>">
+
+
+
+    <button type="submit" name="submit" value="1">Actualizar producto</button>
+</form>
+</body>
+</html>
