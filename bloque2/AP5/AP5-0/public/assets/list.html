@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Tareas</title>
+</head>
+<body>
+<h1>Listado de Tareas</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/list">Lista de Tareas</a>
+</nav>
+<hr>
+<p><a href="/task/create">➕ Crear Nueva Tarea</a></p>
+<table border="1">
+    <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Fecha Creación</th>
+        <th>Fecha Vencimiento</th>
+        <th>Acciones</th>
+    </tr>
+    <?php foreach ($tasks as $task): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($task->getTitle()) ?></td>
+        <td><?php echo htmlspecialchars($task->getDescription()) ?></td>
+        <td><?php echo htmlspecialchars($task->getCreationDate()->format('d-m-Y')) ?></td>
+        <td><?php echo htmlspecialchars($task->getDueDate()->format('d-m-Y')) ?></td>
+        <td>
+            <a href="/task/read/<?php echo $task->getId() ?>">Ver Detalle</a> |
+            <a href="/task/update/<?php echo $task->getId() ?>">Actualizar</a> |
+            <a href="/task/delete/<?php echo $task->getId() ?>">Eliminar</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+</body>
+</html>

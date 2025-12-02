@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $update ? 'Actualizar' : 'Nueva' ?> Tarea</title>
+</head>
+<body>
+    <h1><?php echo $update ? 'Actualizar' : 'Nueva' ?> Tarea</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/list">Lista de Tareas</a>
+    </nav>
+    <hr>
+    <form action="<?php echo $update ? '/task/update/' . $task->getId() : '/task/create' ?>" method="POST">
+        <?php if($update): ?>
+            <input type="hidden" name="id" value="<?php echo $task->getId() ?>">
+        <?php endif; ?>
+
+        <label for="title">Título:</label><br>
+        <input type="text" name="title" id="title"
+               value="<?php echo $update ? htmlspecialchars($task->getTitle()) : '' ?>"
+               required maxlength="255" size="100"><br><br>
+
+        <label for="description">Descripción:</label><br>
+        <textarea name="description" id="description" rows="3" cols="100" required><?php echo $update ? htmlspecialchars($task->getDescription()) : '' ?></textarea><br><br>
+
+        <label for="creationDate">Fecha de Creación:</label>
+        <input type="date" name="creationDate" id="creationDate"
+               value="<?php echo $update ? $task->getCreationDate()->format('Y-m-d') : date('Y-m-d') ?>">
+
+        <label for="dueDate">Fecha de Vencimiento:</label>
+        <input type="date" name="dueDate" id="dueDate"
+               value="<?php echo $update ? $task->getDueDate()->format('Y-m-d') : date('Y-m-d') ?>"><br><br>
+
+        <button type="submit" name="submit" value="1"><?php echo $update ? 'Actualizar' : 'Crear' ?> Tarea</button>
+        <?php if(!$update): ?>
+            <button type="reset">Limpiar</button>
+        <?php endif; ?>
+    </form>
+</body>
+</html>

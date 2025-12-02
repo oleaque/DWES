@@ -22,6 +22,15 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?int $stock = null;
 
+    #[Assert\NotBlank(lenght:100, message: 'El nombre es obligatorio.')]
+    private ?string $Name=null;
+
+    #[Assert\GreaterThanOrEqual(value: 0, message:'precio mayor que 0')]
+    private ?float $Price = null;
+
+    #[Assert\GreaterThan(value: 0, message:'stock mayor o igual q 0')]
+    private ?float $Stock = null;
+
     public function getId(): ?int
     {
         return $this->id;
