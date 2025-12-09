@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Departamentos</title>
+</head>
+<body>
+<h1>Borrar Departamento</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/departamentos">Lista de Departamentos</a>
+</nav>
+<hr>
+        <h2>❌ Estas seguro de eliminar el Departamento || <?php echo $department->getDepartmentNumber() ?> || ❌</h2>
+<form action="<?php echo '/departamento/delete/' . $department->getDepartmentNumber() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $department->getDepartmentNumber() ?>">
+
+    <button type="submit" name="submit" value="1" >CONFIRMAR ELIMINADO</button>
+</form>
+</body>
+</html>

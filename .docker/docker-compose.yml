@@ -5,13 +5,19 @@ services:
       dockerfile: Dockerfile
       context: .
     restart: unless-stopped
-    volumes:
-      - ../:/www/html
     stdin_open: true
     links:
       - mariadb-server
     ports:
-      - "8001:8001"
+      - "8001:8000"
+    volumes:
+      - ../:/var/www/html:delegated
+      - /var/www/html/bloque3/AP71/var
+      - /var/www/html/bloque3/AP71/vendor
+
+    networks:
+      - project_network
+
   mariadb-server:
     container_name: servidor_db
     image: mariadb
@@ -22,4 +28,12 @@ services:
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ../.db_mysql/:/var/lib/mysql
+      - db_mysql:/var/lib/mysql
+    networks:
+      - project_network
+
+volumes:
+  db_mysql:
+
+networks:
+  project_network:

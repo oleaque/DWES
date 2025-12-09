@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+</head>
+<body>
+    <h1>Crear Producto</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/productos">Lista de Productos</a>
+    </nav>
+    <hr>
+    <form action="<?php echo '/producto/create' ?>" method="POST">
+
+        <label for="id">Numero de producto:</label><br>
+        <input type="number" name="id" id="id">
+        <br><br>
+
+        <label for="description">Descripcion:</label><br>
+        <input type="text" name="description" id="description">
+        <br><br>
+
+        <button type="submit" name="submit" value="1">Crear producto</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</body>
+</html>

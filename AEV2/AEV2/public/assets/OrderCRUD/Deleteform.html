@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Pedido</title>
+</head>
+<body>
+<h1>Borrar Pedido</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/pedidos">Lista de Pedidos</a>
+</nav>
+<hr>
+        <h2>❌ Estas seguro de eliminar el Pedido || <?php echo $order->getOrderNum() ?> || ❌</h2>
+<form action="<?php echo '/pedido/delete/' . $order->getOrderNum() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $order->getOrderNum() ?>">
+    <button type="submit" name="submit" value="1" >CONFIRMAR ELIMINADO</button>
+    <table>
+        <tr>
+            <th>Detalles relacionados</th>
+        </tr>
+        <tr>
+            <td>
+                <?php foreach ($order->getDetails() as $detail): ?>
+                <?php if ($detail->getDetailNumber()): ?>
+                ||
+                <a href="/pedido/read/<?php echo htmlspecialchars($order->getOrderNum())?>"><?php echo htmlspecialchars($detail->getDetailNumber()) ?></a>
+                ||
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

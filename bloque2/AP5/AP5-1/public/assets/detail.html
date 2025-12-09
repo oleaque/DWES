@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Tarea</title>
+</head>
+<body>
+    <h1>Detalle de Tarea</h1>
+    <nav>
+        <a href="/">Inicio</a> |
+        <a href="/list">Lista de Tareas</a>
+    </nav>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Fecha Creación</th>
+            <th>Fecha Vencimiento</th>
+        </tr>
+        <tr>
+            <td><?php echo htmlspecialchars($task->getId()) ?></td>
+            <td><?php echo htmlspecialchars($task->getTitle()) ?></td>
+            <td><?php echo htmlspecialchars($task->getDescription()) ?></td>
+            <td><?php echo htmlspecialchars($task->getCreationDate()->format('d-m-Y')) ?></td>
+            <td><?php echo htmlspecialchars($task->getDueDate()->format('d-m-Y')) ?></td>
+        </tr>
+    </table>
+    <hr>
+    <h3>Acciones CRUD</h3>
+    <ul>
+        <li><a href="/task/create">Insertar nueva tarea</a></li>
+        <li><a href="/task/update/<?php echo $task->getId() ?>">Actualizar esta tarea</a></li>
+        <li><a href="/task/delete/<?php echo $task->getId() ?>">Eliminar esta tarea</a></li>
+        <li><a href="/list">Volver al listado</a></li>
+    </ul>
+</body>
+</html>

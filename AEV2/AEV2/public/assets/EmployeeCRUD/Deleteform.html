@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Empleado</title>
+</head>
+<body>
+<h1>Borrar Empleado</h1>
+<nav>
+    <a href="/">Inicio</a> |
+    <a href="/empleados">Lista de Empleados</a>
+</nav>
+<hr>
+        <h2>❌ Estas seguro de eliminar el Empleado || <?php echo $employee->getEmployeeNumber() ?> || ❌</h2>
+<form action="<?php echo '/empleado/delete/' . $employee->getEmployeeNumber() ?>" method="POST">
+    <input type="hidden" name="id" value="<?php echo $employee->getEmployeeNumber() ?>">
+
+    <button type="submit" name="submit" value="1" >CONFIRMAR ELIMINADO</button>
+</form>
+</body>
+</html>

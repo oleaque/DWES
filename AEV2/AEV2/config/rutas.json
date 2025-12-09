@@ -1,0 +1,46 @@
+{
+  "/": {
+    "controller": "MainController",
+    "action": "main"
+  },
+  "/clientes": {
+  "controller": "ClientController",
+  "action": "crud"
+  },
+  "/cliente": {
+  "controller": "ClientController",
+  "action": "crud"
+},
+  "/pedidos": {
+    "controller": "OrderController",
+    "action": "crud"
+  },
+  "/pedido": {
+    "controller": "OrderController",
+    "action": "crud"
+  },
+  "/empleados": {
+    "controller": "EmployeeController",
+    "action": "crud"
+  },
+  "/empleado": {
+    "controller": "EmployeeController",
+    "action": "crud"
+  },
+  "/departamentos": {
+    "controller": "DepartmentController",
+    "action": "crud"
+  },
+  "/departamento": {
+    "controller": "DepartmentController",
+    "action": "crud"
+  },
+  "/productos": {
+    "controller": "ProductController",
+    "action": "crud"
+  },
+  "/producto": {
+    "controller": "ProductController",
+    "action": "crud"
+  }
+}

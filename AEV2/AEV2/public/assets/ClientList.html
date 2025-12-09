@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Clientes</title>
+</head>
+<body>
+<h1>Listado de Clientes</h1>
+<nav>
+    <a href="/">Inicio</a> |
+</nav>
+<hr>
+<table border="1">
+    <tr>
+        <th>Codigo cliente</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Ciudad</th>
+        <th>Estado</th>
+        <th>Codigo postal</th>
+        <th>Area</th>
+        <th>Telefono</th>
+        <th>Representante</th>
+        <th>Limite credito</th>
+        <th>Observaciones</th>
+        <th>Acciones</th>
+
+
+    </tr>
+    <?php foreach ($clients as $client): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($client->getClientCode()) ?></td>
+        <td><?php echo htmlspecialchars($client->getName()) ?></td>
+        <td><?php echo htmlspecialchars($client->getAddress()) ?></td>
+        <td><?php echo htmlspecialchars($client->getCity()) ?></td>
+        <td><?php echo htmlspecialchars($client->getStatus()) ?></td>
+        <td><?php echo htmlspecialchars($client->getPostalCode()) ?></td>
+        <td><?php echo htmlspecialchars($client->getArea()) ?></td>
+        <td><?php echo htmlspecialchars($client->getPhone()) ?></td>
+        <td><?php echo htmlspecialchars($client->getRepresentant()?->getEmployeeNumber() ?? 'nulo') ?></td>
+        <td><?php echo htmlspecialchars($client->getCredit()) ?></td>
+        <td><?php echo htmlspecialchars($client->getObservations()) ?></td>
+        <td><a href="/cliente/update/<?php echo $client->getClientCode() ?>">🔄 Actualizar</a> <br>
+            <a href="/cliente/delete/<?php echo $client->getClientCode() ?>">❌ Borrar</a> </td>
+    </tr>
+    <?php endforeach; ?>
+    <p><a href="/cliente/create">➕ Crear Nuevo Cliente</a></p>
+</table>
+</body>
+</html>

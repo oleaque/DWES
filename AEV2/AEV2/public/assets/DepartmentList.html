@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamentos</title>
+</head>
+<body>
+<h1>Departamentos</h1>
+<nav>
+    <a href="/">Inicio</a>
+</nav>
+<hr>
+<table border="1">
+    <tr>
+        <th>Numero departamento</th>
+        <th>Nombre de departamento</th>
+        <th>Ubicacion</th>
+        <th>Color</th>
+        <th>Acciones</th>
+    </tr>
+    <?php foreach ($departments as $department): ?>
+    <tr>
+        <td><?php echo htmlspecialchars($department->getDepartmentNumber()) ?></td>
+        <td><?php echo htmlspecialchars($department->getDepartmentName()) ?></td>
+        <td><?php echo htmlspecialchars($department->getLocation()) ?></td>
+        <td><?php echo htmlspecialchars($department->getColor()) ?></td>
+        <td><a href="/departamento/update/<?php echo $department->getDepartmentNumber() ?>">🔄 Actualizar</a> ||
+            <a href="/departamento/delete/<?php echo $department->getDepartmentNumber() ?>">❌ Borrar</a> </td>
+    </tr>
+    <?php endforeach; ?>
+    <p><a href="/departamento/create">➕ Crear Nuevo Departamento</a></p>
+</table>
+<hr>
+</body>
+</html>

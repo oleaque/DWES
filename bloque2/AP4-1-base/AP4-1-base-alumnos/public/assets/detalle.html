@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalle de Tarea</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Título</td>
+        <td>Descripción</td>
+        <td>Fecha de Creación</td>
+        <td>Fecha de Vencimiento</td>
+        <td>Acciones</td>
+    </tr>
+    <tr>
+        <td><?php echo htmlspecialchars($tarea->getId()) ?></td>
+        <td><?php echo htmlspecialchars($tarea->getTitulo()) ?></td>
+        <td><?php echo htmlspecialchars($tarea->getDescripcion()) ?></td>
+        <td><?php echo $tarea->getFechaCreacion()->format('Y-m-d') ?></td>
+        <td><?php echo $tarea->getFechaVencimiento()->format('Y-m-d') ?></td>
+        <td><a href="/">volver</a></td>
+    </tr>
+</table>
+</body>
+</html>
+
